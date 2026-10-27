@@ -20,6 +20,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@SomShahapurkar">
 
+  <script>document.documentElement.classList.add("js");</script>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -101,7 +102,7 @@
           <p class="lede">I help leadership teams decide where AI is worth it, then build it so it holds up in the real world. I've spent two decades building AI that ships.</p>
 
           <div class="actions">
-            <a class="btn btn-primary" href="#contact">Start a conversation</a>
+            <a class="btn btn-primary" href="#contact"><span class="label-long">Start a conversation</span><span class="label-short">Let's talk</span></a>
             <a class="btn btn-quiet" href="#about">Read my story</a>
           </div>
         </div>
@@ -146,32 +147,60 @@
         <div class="about-copy">
           <p class="about-intro">I've built and operationalized artificial intelligence, machine learning and advanced analytics for my entire career, and I've led organizations at Intel, Verizon, FICO and Iron Mountain.</p>
 
+          <div class="about-more" id="about-more">
           <p>At Intel I led the design and deployment of AI and machine learning systems for high-volume manufacturing, the Internet of Things, retail, smart homes, communications and self-driving cars. At Verizon I led an engineering team that added advanced analytics to a telematics software platform. I also co-founded a startup applying AI to energy management, which won several competitions including the Southwest Clean-Tech Open.</p>
 
           <p>Today I'm an adjunct Professor of Artificial Intelligence at the University of San Diego's Shiley-Marcos School of Engineering. I'm also a Lean Six Sigma black belt in applied statistics, and I teach the 7 Habits of Highly Effective People leadership program.</p>
 
           <p>Away from work, you'll find me mountain biking, off-roading in a 4×4, riding my motorcycle, or cycling for charity.</p>
+          </div>
+          <button class="more-toggle" type="button" aria-expanded="false" aria-controls="about-more" data-more="Read my full story" data-less="Show less">Read my full story</button>
 
           <dl class="facts">
             <div>
-              <dt>Founder</dt>
+              <dt><svg class="fact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"/><path d="M2.5 21h19M9.5 21v-6h5v6"/></svg>Founder</dt>
               <dd>OzzSom AI, LLC</dd>
             </div>
             <div>
-              <dt>Education</dt>
-              <dd>PhD, Computer Science, Arizona State University<br>MS, Electrical Engineering, University of Arizona<br>BE, Instrumentation and Electronics, Bangalore University</dd>
+              <dt><svg class="fact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9.5 12 5l10 4.5L12 14 2 9.5Z"/><path d="M6.5 11.6V16c0 1.4 2.5 3 5.5 3s5.5-1.6 5.5-3v-4.4M22 9.5V15"/></svg>Education</dt>
+              <dd>
+                <ul class="degrees">
+                  <li><strong>PhD, Computer Science</strong><span>Arizona State University</span></li>
+                  <li><strong>MS, Electrical Engineering</strong><span>University of Arizona</span></li>
+                  <li><strong>BE, Instrumentation and Electronics</strong><span>Bangalore University</span></li>
+                </ul>
+              </dd>
             </div>
             <div>
-              <dt>Patents</dt>
-              <dd>AI for semiconductor manufacturing<br>AI for energy management</dd>
+              <dt><svg class="fact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3Z"/></svg>Patents</dt>
+              <dd>
+                <ul class="plain-list">
+                  <li>AI for semiconductor manufacturing</li>
+                  <li>AI for energy management</li>
+                </ul>
+              </dd>
             </div>
             <div>
-              <dt>Boards</dt>
-              <dd>Core Strengths, IBIL Global, University of San Diego</dd>
+              <dt><svg class="fact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15.5 4.9a3.2 3.2 0 0 1 0 6.2M17.5 14.4c2.1.8 3.5 2.9 3.5 5.6"/></svg>Boards</dt>
+              <dd>
+                <ul class="chips">
+                  <li>Core Strengths</li>
+                  <li>IBIL Global</li>
+                  <li>University of San Diego</li>
+                </ul>
+              </dd>
             </div>
             <div>
-              <dt>Focus</dt>
-              <dd>Robust, explainable, ethical and causal AI, applied to IoT, manufacturing, autonomous vehicles and financial systems</dd>
+              <dt><svg class="fact-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>Focus</dt>
+              <dd>
+                <ul class="chips">
+                  <li>Robust AI</li>
+                  <li>Explainable AI</li>
+                  <li>Ethical AI</li>
+                  <li>Causal AI</li>
+                </ul>
+                <p class="fact-note">Applied to IoT, manufacturing, autonomous vehicles and financial systems</p>
+              </dd>
             </div>
           </dl>
 
@@ -184,20 +213,24 @@
     <section class="section principles" aria-labelledby="principles-title">
       <div class="wrap">
         <h2 id="principles-title" class="section-title">What sensible means in practice</h2>
-        <div class="principle-grid">
+        <div class="principle-grid snap-track">
           <article class="principle">
+            <svg class="principle-mark" viewBox="0 0 22 22" aria-hidden="true"><rect x="0" y="0" width="6" height="6" class="hot"/><rect x="8" y="0" width="6" height="6"/><rect x="16" y="0" width="6" height="6"/><rect x="0" y="8" width="6" height="6"/><rect x="8" y="8" width="6" height="6"/><rect x="16" y="8" width="6" height="6"/><rect x="0" y="16" width="6" height="6"/><rect x="8" y="16" width="6" height="6"/><rect x="16" y="16" width="6" height="6"/></svg>
             <h3>It has to pay for itself.</h3>
             <p>AI earns its place by moving a number that matters: revenue, cost, risk or time. If it can't, it waits.</p>
           </article>
           <article class="principle">
+            <svg class="principle-mark" viewBox="0 0 22 22" aria-hidden="true"><rect x="0" y="0" width="6" height="6"/><rect x="8" y="0" width="6" height="6"/><rect x="16" y="0" width="6" height="6"/><rect x="0" y="8" width="6" height="6"/><rect x="8" y="8" width="6" height="6" class="hot"/><rect x="16" y="8" width="6" height="6"/><rect x="0" y="16" width="6" height="6"/><rect x="8" y="16" width="6" height="6"/><rect x="16" y="16" width="6" height="6"/></svg>
             <h3>Production, or it didn't happen.</h3>
             <p>A model in a notebook helps no one. The real work is getting it running, monitored and owned by your team.</p>
           </article>
           <article class="principle">
+            <svg class="principle-mark" viewBox="0 0 22 22" aria-hidden="true"><rect x="0" y="0" width="6" height="6"/><rect x="8" y="0" width="6" height="6"/><rect x="16" y="0" width="6" height="6"/><rect x="0" y="8" width="6" height="6"/><rect x="8" y="8" width="6" height="6"/><rect x="16" y="8" width="6" height="6"/><rect x="0" y="16" width="6" height="6"/><rect x="8" y="16" width="6" height="6"/><rect x="16" y="16" width="6" height="6" class="hot"/></svg>
             <h3>Guardrails are part of the product.</h3>
             <p>Unintended consequences get designed out at the start, not patched after launch.</p>
           </article>
           <article class="principle">
+            <svg class="principle-mark" viewBox="0 0 22 22" aria-hidden="true"><rect x="0" y="0" width="6" height="6"/><rect x="8" y="0" width="6" height="6"/><rect x="16" y="0" width="6" height="6" class="hot"/><rect x="0" y="8" width="6" height="6"/><rect x="8" y="8" width="6" height="6"/><rect x="16" y="8" width="6" height="6"/><rect x="0" y="16" width="6" height="6"/><rect x="8" y="16" width="6" height="6"/><rect x="16" y="16" width="6" height="6"/></svg>
             <h3>Know when to stop.</h3>
             <p>Some AI ideas should end. Spotting them early saves more than any model will.</p>
           </article>
@@ -215,25 +248,25 @@
         </div>
 
         <ul class="offer-list">
-          <li>
-            <h3>AI strategy for leadership teams</h3>
-            <p>Where AI can pay off in your business, where it won't, and what to do first.</p>
+          <li class="offer is-open">
+            <h3 class="offer-head"><span id="offer-1-title">AI strategy for leadership teams</span><button class="offer-toggle" type="button" aria-expanded="true" aria-controls="offer-1" aria-labelledby="offer-1-title"></button></h3>
+            <p class="offer-body" id="offer-1">Where AI can pay off in your business, where it won't, and what to do first.</p>
           </li>
-          <li>
-            <h3>From prototype to production</h3>
-            <p>Taking promising models into reliable, monitored systems your team can run and own.</p>
+          <li class="offer">
+            <h3 class="offer-head"><span id="offer-2-title">From prototype to production</span><button class="offer-toggle" type="button" aria-expanded="false" aria-controls="offer-2" aria-labelledby="offer-2-title"></button></h3>
+            <p class="offer-body" id="offer-2">Taking promising models into reliable, monitored systems your team can run and own.</p>
           </li>
-          <li>
-            <h3>Responsible, explainable AI</h3>
-            <p>Robustness, explainability and guardrails built in, so decisions hold up with customers and regulators.</p>
+          <li class="offer">
+            <h3 class="offer-head"><span id="offer-3-title">Responsible, explainable AI</span><button class="offer-toggle" type="button" aria-expanded="false" aria-controls="offer-3" aria-labelledby="offer-3-title"></button></h3>
+            <p class="offer-body" id="offer-3">Robustness, explainability and guardrails built in, so decisions hold up with customers and regulators.</p>
           </li>
-          <li>
-            <h3>Education for executives and teams</h3>
-            <p>Plain-language workshops that make AI and machine learning practical, drawn from my university teaching.</p>
+          <li class="offer">
+            <h3 class="offer-head"><span id="offer-4-title">Education for executives and teams</span><button class="offer-toggle" type="button" aria-expanded="false" aria-controls="offer-4" aria-labelledby="offer-4-title"></button></h3>
+            <p class="offer-body" id="offer-4">Plain-language workshops that make AI and machine learning practical, drawn from my university teaching.</p>
           </li>
-          <li>
-            <h3>Board and startup advice</h3>
-            <p>An honest read on your AI bets. I've founded a startup and served on boards, so I know when to push and when to stop.</p>
+          <li class="offer">
+            <h3 class="offer-head"><span id="offer-5-title">Board and startup advice</span><button class="offer-toggle" type="button" aria-expanded="false" aria-controls="offer-5" aria-labelledby="offer-5-title"></button></h3>
+            <p class="offer-body" id="offer-5">An honest read on your AI bets. I've founded a startup and served on boards, so I know when to push and when to stop.</p>
           </li>
         </ul>
       </div>
@@ -251,7 +284,7 @@
           <span class="feature-link">Listen to the episode<svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
         </a>
 
-        <ul class="article-list">
+        <ul class="article-list snap-track">
           <li>
             <a href="https://www.linkedin.com/pulse/ai-machine-learning-big-data-science-same-som-shahapurkar/" target="_blank" rel="noopener">
               <span class="article-title">AI and machine learning, demystified</span>
@@ -294,7 +327,7 @@
           <a class="btn btn-primary" href="#contact" data-topic="Speaking">Invite me to speak</a>
         </div>
 
-        <ol class="timeline" aria-label="Selected appearances, newest first">
+        <ol class="timeline" id="timeline" aria-label="Selected appearances, newest first">
           <li>
             <time datetime="2023-09-28">Sep 2023</time>
             <div>
@@ -345,6 +378,7 @@
             </div>
           </li>
         </ol>
+        <button class="more-toggle timeline-toggle" type="button" aria-expanded="false" aria-controls="timeline" data-more="Show all 7 appearances" data-less="Show fewer">Show all 7 appearances</button>
       </div>
     </section>
 

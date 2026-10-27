@@ -433,8 +433,8 @@ a { color: inherit; }
   color: var(--accent);
 }
 
-.about-copy > p { max-width: 36em; color: var(--ink-soft); }
-.about-copy > p + p { margin-top: 1.1em; }
+.about-copy p { max-width: 36em; color: var(--ink-soft); }
+.about-more p + p { margin-top: 1.1em; }
 .about-copy .about-intro {
   font-family: var(--serif);
   font-size: clamp(1.3125rem, 1.15rem + 0.5vw, 1.5rem);
@@ -465,6 +465,21 @@ a { color: inherit; }
   line-height: 1.6;
   color: var(--ink-soft);
 }
+.facts ul { list-style: none; margin: 0; padding: 0; }
+.degrees li + li { margin-top: 8px; }
+.degrees strong { display: block; font-weight: 500; color: var(--ink); }
+.degrees span { display: block; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 2px; }
+.chips li {
+  padding: 4px 11px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+}
+.about-copy .fact-note { margin-top: 10px; font-size: 0.9375rem; line-height: 1.5; }
 
 /* Principles */
 
@@ -787,6 +802,14 @@ a { color: inherit; }
 /* ---------- Responsive ---------- */
 
 a, button, label { -webkit-tap-highlight-color: transparent; }
+
+/* Phone-only pieces, hidden on larger screens */
+.label-short,
+.more-toggle,
+.offer-toggle,
+.snap-dots,
+.principle-mark,
+.fact-icon { display: none; }
 .btn:active { transform: translateY(1px); }
 
 /* Tablets and small laptops */
@@ -819,7 +842,7 @@ a, button, label { -webkit-tap-highlight-color: transparent; }
   :root {
     --gutter: 24px;
     --header-h: 64px;
-    --section-space: 88px;
+    --section-space: 80px;
   }
   body { font-size: 1.0625rem; }
 
@@ -886,9 +909,9 @@ a, button, label { -webkit-tap-highlight-color: transparent; }
     border: 0;
   }
 
-  /* Hero */
-  .hero { padding-top: 36px; }
-  .hero-grid { gap: 56px; }
+  /* Hero: text only, both buttons on one row */
+  .hero { padding-top: 40px; }
+  .hero-grid { gap: 0; }
   .byline { gap: 12px; margin-bottom: 28px; }
   .avatar { width: 48px; height: 48px; }
   .byline p { font-size: 0.9375rem; }
@@ -898,45 +921,156 @@ a, button, label { -webkit-tap-highlight-color: transparent; }
     letter-spacing: -0.028em;
   }
   .lede { margin-top: 20px; font-size: 1.125rem; line-height: 1.55; }
-  .actions { flex-direction: column; gap: 10px; margin-top: 32px; }
-  .actions .btn { width: 100%; min-height: 54px; }
+  .actions { flex-wrap: nowrap; gap: 10px; margin-top: 32px; }
+  .actions .btn { flex: 1 1 0; min-width: 0; min-height: 52px; padding-inline: 12px; }
+  .label-long { display: none; }
+  .label-short { display: inline; }
+  .wafer-figure { display: none; }
 
-  .wafer-figure { justify-self: center; max-width: 300px; }
-  .wafer-figure figcaption { margin-top: 20px; }
-
-  .proof { margin-top: 64px; padding-top: 28px; padding-bottom: 72px; gap: 28px; }
-  .proof-label { margin-bottom: 12px; }
+  .proof { margin-top: 48px; padding-top: 24px; padding-bottom: 64px; gap: 24px; }
+  .proof-label { margin-bottom: 10px; }
   .proof-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px 16px;
-    font-size: 1.375rem;
+    gap: 6px 16px;
+    font-size: 1.3125rem;
   }
   .proof-list li:only-child { grid-column: 1 / -1; }
 
   /* Section rhythm */
-  .section-title { margin-bottom: 36px; }
+  .section-title { margin-bottom: 32px; }
 
-  /* About: heading, then portrait, then story */
-  .about-title { margin-bottom: 32px; }
-  .portrait { width: calc(100% - 10px); max-width: 360px; margin-bottom: 48px; }
+  /* About: heading, portrait and a short intro; the rest opens on tap */
+  .about-title { margin-bottom: 28px; }
+  .portrait { width: calc(100% - 10px); max-width: 360px; margin-bottom: 40px; }
   .portrait-frame::after { inset: 10px -10px -10px 10px; }
-  .about-copy .about-intro { font-size: 1.3125rem; line-height: 1.45; }
-  .facts { margin: 40px 0 32px; }
-  .facts > div { grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 14px 0; }
+  .about-copy .about-intro { font-size: 1.3125rem; line-height: 1.45; margin-bottom: 0; }
+  .about-more { margin-top: 1.2em; }
+  .js .about-more:not(.is-open) { display: none; }
 
-  /* Principles */
-  .principle-grid { grid-template-columns: minmax(0, 1fr); }
-  .principle { padding: 24px 0 32px; }
+  .js .more-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    margin-top: 12px;
+    padding: 0;
+    background: none;
+    border: 0;
+    font: 600 1rem/1.2 var(--sans);
+    color: var(--accent);
+    cursor: pointer;
+  }
+  .more-toggle::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-right: 1.6px solid currentColor;
+    border-bottom: 1.6px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.2s ease;
+  }
+  .more-toggle[aria-expanded="true"]::after { transform: translateY(2px) rotate(-135deg); }
+
+  /* Facts: one soft panel with an icon per row */
+  .facts {
+    margin: 32px 0 28px;
+    padding: 4px 18px;
+    background: var(--paper);
+    border: 0;
+    border-radius: 8px;
+  }
+  .facts > div { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 16px 0; }
+  .facts > div:last-child { border-bottom: 0; }
+  .facts dt { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; color: var(--ink-soft); }
+  .fact-icon { display: block; width: 20px; height: 20px; flex: none; color: var(--accent); }
+  .facts dd { padding-left: 30px; font-size: 0.9375rem; line-height: 1.5; color: var(--ink); }
+  .degrees strong { font-weight: 600; }
+  .chips li { padding: 4px 10px; font-size: 0.8125rem; }
+
+  /* Swipeable rows (principles, articles) */
+  .snap-track {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    margin-inline: calc(-1 * var(--gutter));
+    padding: 4px 0 8px var(--gutter);
+    scrollbar-width: none;
+  }
+  .snap-track::-webkit-scrollbar { display: none; }
+  .snap-track::after { content: ""; flex: 0 0 calc(var(--gutter) - 12px); }
+  .snap-dots { display: flex; gap: 6px; margin-top: 16px; }
+  .snap-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--line-strong);
+    transition: width 0.2s ease, background-color 0.2s ease;
+  }
+  .snap-dots span.is-active { width: 20px; background: var(--ink); }
+
+  /* Principles: cards */
+  .principle {
+    flex: 0 0 84%;
+    scroll-snap-align: start;
+    padding: 24px 22px 28px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .principle-mark { display: block; width: 22px; height: 22px; margin-bottom: 36px; fill: var(--line-strong); }
+  .principle-mark .hot { fill: var(--brass); }
   .principle h3 { font-size: 1.5rem; margin-bottom: 10px; }
+  .principle p { font-size: 1rem; }
 
-  /* Advisory and speaking */
-  .split-intro > p { margin-bottom: 28px; }
-  .split-intro .btn { width: 100%; min-height: 54px; }
-  .offer-list li { padding: 24px 0; }
-  .teaching { margin-bottom: 28px; }
+  /* Advisory and speaking: heading, intro, list, then the button */
+  .split { row-gap: 0; }
+  .split-intro { display: contents; }
+  .split-intro h2 { margin-bottom: 16px; }
+  .split-intro > p { margin-bottom: 24px; }
+  .split .offer-list,
+  .split .timeline { order: 1; }
+  .split .timeline-toggle { order: 2; justify-self: start; }
+  .split-intro > .btn { order: 3; width: 100%; min-height: 52px; margin-top: 32px; }
 
-  /* Writing: the podcast becomes an edge-to-edge panel */
+  /* Advisory: tap a service to open it */
+  .offer-list li { padding: 0; }
+  .offer-list .offer-head {
+    position: relative;
+    margin: 0;
+    padding: 20px 44px 20px 0;
+    font-size: 1.25rem;
+  }
+  .js .offer-toggle {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .offer-toggle::before,
+  .offer-toggle::after {
+    content: "";
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    width: 14px;
+    height: 1.6px;
+    background: var(--ink);
+    transition: transform 0.2s ease;
+  }
+  .offer-toggle::after { transform: rotate(90deg); }
+  .offer-toggle[aria-expanded="true"]::after { transform: rotate(0deg); }
+  .offer-list .offer-body { margin-top: -6px; padding: 0 0 22px; font-size: 1rem; }
+  .js .offer:not(.is-open) .offer-body { display: none; }
+
+  /* Writing: the podcast is an edge-to-edge panel, articles are swipeable cards */
   .feature {
     margin-inline: calc(-1 * var(--gutter));
     padding: 32px var(--gutter) 36px;
@@ -946,13 +1080,37 @@ a, button, label { -webkit-tap-highlight-color: transparent; }
   }
   .feature:hover { border-left-color: transparent; }
   .feature-title { font-size: 1.75rem; }
-  .article-list a { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 22px 0; }
-  .article-text { grid-column: auto; grid-row: auto; }
-  .article-source { margin-top: 4px; }
+  .article-list { margin-top: 20px; border-top: 0; }
+  .article-list li { flex: 0 0 80%; scroll-snap-align: start; display: flex; }
+  .article-list a {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 22px 20px 20px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .article-title { font-size: 1.25rem; }
+  .article-text { font-size: 0.9375rem; }
+  .article-source { margin-top: auto; padding-top: 6px; }
 
-  /* Timeline */
-  .timeline li { grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 20px 0; }
-  .timeline time { padding-top: 0; }
+  /* Speaking: teaching panel, compact timeline */
+  .teaching {
+    margin-bottom: 0;
+    padding: 4px 18px;
+    background: var(--paper);
+    border: 0;
+    border-radius: 8px;
+  }
+  .teaching > div { padding: 14px 0; border-bottom: 0; }
+  .timeline { margin-top: 28px; }
+  .timeline li { grid-template-columns: 4.5rem minmax(0, 1fr); gap: 12px; padding: 18px 0; }
+  .timeline time { padding-top: 0.2em; font-size: 0.875rem; }
+  .timeline a { font-size: 1.125rem; }
+  .timeline span { font-size: 0.875rem; }
+  .js .timeline:not(.is-open) li:nth-child(n+5) { display: none; }
 
   /* Contact: the form becomes an edge-to-edge sheet that meets the footer */
   .contact { padding-bottom: 0; }

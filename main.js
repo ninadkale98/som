@@ -79,6 +79,83 @@
     });
   });
 
+  /* ---------- Phone layout helpers ----------
+     The CSS only collapses or swipes these on phones; on larger screens everything is shown. */
+
+  // Keep an element in the same place on screen while content above it opens or closes
+  function keepInPlace(el, change) {
+    var before = el.getBoundingClientRect().top;
+    change();
+    var after = el.getBoundingClientRect().top;
+    if (Math.abs(after - before) > 1) window.scrollBy(0, after - before);
+  }
+
+  // "Read my full story" and "Show all appearances"
+  document.querySelectorAll(".more-toggle").forEach(function (btn) {
+    var target = document.getElementById(btn.getAttribute("aria-controls"));
+    if (!target) return;
+    btn.addEventListener("click", function () {
+      var open = btn.getAttribute("aria-expanded") !== "true";
+      var apply = function () {
+        btn.setAttribute("aria-expanded", String(open));
+        target.classList.toggle("is-open", open);
+        btn.textContent = open ? btn.getAttribute("data-less") : btn.getAttribute("data-more");
+      };
+      // Opening: let the new text appear where the reader is looking.
+      // Closing: keep the button under their finger instead of jumping the page.
+      if (open) apply(); else keepInPlace(btn, apply);
+    });
+  });
+
+  // Advisory services: one open at a time
+  var offers = Array.prototype.slice.call(document.querySelectorAll(".offer"));
+  offers.forEach(function (item) {
+    var btn = item.querySelector(".offer-toggle");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var open = !item.classList.contains("is-open");
+      keepInPlace(item, function () {
+        offers.forEach(function (other) {
+          other.classList.remove("is-open");
+          var b = other.querySelector(".offer-toggle");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+        if (open) {
+          item.classList.add("is-open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+  });
+
+  // Swipeable rows: position dots under the cards
+  document.querySelectorAll(".snap-track").forEach(function (track) {
+    var items = Array.prototype.slice.call(track.children);
+    if (items.length < 2) return;
+    var dots = document.createElement("div");
+    dots.className = "snap-dots";
+    dots.setAttribute("aria-hidden", "true");
+    items.forEach(function () { dots.appendChild(document.createElement("span")); });
+    track.parentNode.insertBefore(dots, track.nextSibling);
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var step = items[0].getBoundingClientRect().width + 12;
+      var index = Math.round(track.scrollLeft / step);
+      if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) index = items.length - 1;
+      index = Math.max(0, Math.min(items.length - 1, index));
+      Array.prototype.forEach.call(dots.children, function (dot, i) {
+        dot.classList.toggle("is-active", i === index);
+      });
+    }
+    track.addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
+
   /* ---------- 2. Contact form ---------- */
 
   var form = document.getElementById("contact-form");
