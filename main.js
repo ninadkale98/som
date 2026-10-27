@@ -22,10 +22,13 @@
 
   var toggle = document.querySelector(".nav-toggle");
   var menu = document.getElementById("nav-menu");
+  var toggleLabel = toggle ? toggle.querySelector(".nav-toggle-label") : null;
   function setMenu(open) {
     if (!toggle || !menu) return;
     toggle.setAttribute("aria-expanded", String(open));
     menu.classList.toggle("is-open", open);
+    document.documentElement.classList.toggle("menu-open", open); // stops the page scrolling behind the menu
+    if (toggleLabel) toggleLabel.textContent = open ? "Close" : "Menu";
   }
   if (toggle && menu) {
     toggle.addEventListener("click", function () {
@@ -40,6 +43,11 @@
         toggle.focus();
       }
     });
+    // Close the phone menu if the window grows to the desktop layout
+    var desktop = window.matchMedia("(min-width: 761px)");
+    var onDesktop = function (e) { if (e.matches) setMenu(false); };
+    if (desktop.addEventListener) desktop.addEventListener("change", onDesktop);
+    else if (desktop.addListener) desktop.addListener(onDesktop);
   }
 
   // Highlight the nav link for the section in view
