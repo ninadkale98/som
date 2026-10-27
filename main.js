@@ -63,7 +63,7 @@
     });
   }
 
-  // Buttons like "Invite Som to speak" preselect the matching topic in the form
+  // Buttons like "Invite me to speak" preselect the matching topic in the form
   document.querySelectorAll("[data-topic]").forEach(function (link) {
     link.addEventListener("click", function () {
       var radio = document.querySelector('input[name="topic"][value="' + link.getAttribute("data-topic") + '"]');
@@ -80,7 +80,7 @@
     var fields = [
       { el: form.elements.name, empty: "Enter your name." },
       { el: form.elements.email, empty: "Enter your email address.", invalid: "Enter an email address like name@company.com." },
-      { el: form.elements.message, empty: "Write a short message so Som knows how to help." }
+      { el: form.elements.message, empty: "Write a short message so I know how I can help." }
     ];
 
     function setStatus(text, kind) {
@@ -126,7 +126,7 @@
       }
 
       if (form.action.indexOf("YOUR_FORM_ID") !== -1) {
-        setStatus("This form isn't connected yet. Reach Som on LinkedIn for now.", "error");
+        setStatus("This form isn't connected yet. Reach me on LinkedIn for now.", "error");
         if (window.console) console.warn("Contact form: replace YOUR_FORM_ID in index.html with your Formspree form ID.");
         return;
       }
@@ -143,10 +143,10 @@
         .then(function (res) {
           if (!res.ok) throw new Error("status " + res.status);
           form.reset();
-          setStatus("Message sent. Som will reply by email.", "success");
+          setStatus("Message sent. I'll reply by email.", "success");
         })
         .catch(function () {
-          setStatus("Your message didn't send. Check your connection and try again, or reach Som on LinkedIn.", "error");
+          setStatus("Your message didn't send. Check your connection and try again, or reach me on LinkedIn.", "error");
         })
         .then(function () {
           submitBtn.disabled = false;

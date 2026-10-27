@@ -2,6 +2,8 @@
 
 The website for Dr. Som Shahapurkar and OzzSom AI. It replaces the old Wix site at shahapurkar.wixsite.com/website.
 
+All the site copy is written in Som's own voice (first person).
+
 It is a plain static site: HTML, CSS and a little JavaScript. There is no build step, so GitHub Pages can serve it as is.
 
 ```
@@ -72,7 +74,7 @@ The old site's content dates from about 2018. The new site combines it with his 
 1. **Current title.** The site calls him "Founder, OzzSom AI". His USD page lists him as Director of AI Products at FICO. Which is current, and should both appear?
 2. **"Two decades" of experience.** USD says a 20-year career, and that page was last updated in early 2024.
 3. **Boards:** Core Strengths, IBIL Global and the University of San Diego. These came from the old site. Are they still current?
-4. **Teaching:** Adjunct Professor of AI at USD (MS in Applied AI) and AI instructor for UCSD's Executive Perspective for Scientists & Engineers program.
+4. **Teaching:** Adjunct Professor of AI at USD (MS in Applied AI). His USD faculty page also lists UCSD's Executive Perspective for Scientists & Engineers program; it was left off the site, so add it back if it's current.
 5. **Patent claim:** his first patent is cited by 11 of Google's earliest AI/ML patents (from the USD bio).
 6. **Advisory services and principles.** These are new copy written from his background and talks, not taken from the old site. Som should check they match how he works.
 7. **Missing article link.** The old site's "Facebook: Software or Media Company?" link pointed to the wrong article, so it's left out. Add it back if you can find the right URL.
