@@ -398,10 +398,10 @@ a { color: inherit; }
 .about-title { grid-area: title; max-width: 16ch; margin-bottom: 32px; }
 .about-copy { grid-area: copy; }
 
-.portrait { grid-area: portrait; position: sticky; top: calc(var(--header-h) + 32px); isolation: isolate; }
+.portrait { grid-area: portrait; position: sticky; top: calc(var(--header-h) + 32px); isolation: isolate; max-width: 400px; }
 .portrait-frame {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   background:
     radial-gradient(circle at 50% 50%, transparent 0 46%, var(--paper) 46.2%),
     repeating-linear-gradient(0deg, transparent 0 13px, var(--surface) 13px 16px),
